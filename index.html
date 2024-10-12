@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road & Vehicle Safety Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://images.pexels.com/photos/9350472/pexels-photo-9350472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden;
+}
+
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1.5s ease forwards;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transform: scale(0.9);
+            animation: bounceIn 1s forwards;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: bounceInDown 1s ease forwards;
+        }
+
+        @keyframes bounceInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin: 15px 0 5px;
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        select, input[type="button"] {
+            padding: 12px;
+            margin-top: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            transition: all 0.4s ease;
+        }
+
+        select {
+            background-color: rgba(255, 255, 255, 0.6);
+            color: #333;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 500;
+        }
+
+        select:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            animation: pulse 0.6s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        input[type="button"] {
+            background-color: #ff5e62;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 94, 98, 0.3);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        input[type="button"]:hover {
+            background-color: #f85032;
+            box-shadow: 0 12px 24px rgba(255, 94, 98, 0.5);
+            transform: translateY(-4px);
+            animation: shake 0.5s forwards;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        input[type="button"]:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 12px rgba(255, 94, 98, 0.6);
+        }
+
+        
+        #suggestion {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            color: #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            display: none;
+            animation: slideIn 1s ease forwards;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        
+        header, input[type="button"], label {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px #ff5e62, 0 0 40px #ff5e62, 0 0 50px #ff5e62;
+        }
+
+       
+        @media (max-width: 768px) {
+            header {
+                font-size: 2rem; 
+            }
+
+            section {
+                padding: 20px; 
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            input[type="button"], select {
+                font-size: 14px; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 15px; 
+            }
+
+            h2 {
+                font-size: 1.3rem; 
+            }
+
+            input[type="button"], select {
+                font-size: 12px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay">
+    <header>
+        Road & Vehicle Safety Guide
+    </header>
+
+    <section>
+        <h2>Get Speed Limit Recommendations</h2>
+
+        <label for="roadType">Select the Type of Road:</label>
+        <select id="roadType">
+            <option value="">-- Select --</option>
+            <option value="highway">Highway</option>
+            <option value="city">City Road</option>
+            <option value="rural">Rural Road</option>
+            <option value="offroad">Off-road</option>
+        </select>
+
+        <label for="vehicleType">Select the Type of Vehicle:</label>
+        <select id="vehicleType">
+            <option value="">-- Select --</option>
+            <option value="two-wheeler">Two-Wheeler</option>
+            <option value="three-wheeler">Three-Wheeler</option>
+            <option value="four-wheeler">Four-Wheeler</option>
+            <option value="heavy-vehicle">Heavy Vehicle</option>
+        </select>
+
+        <input type="button" value="Get Speed Suggestion" onclick="getSpeedSuggestion()">
+  
+        <div id="suggestion"></div>
+        <div class="error" id="errorMessage">Please select both road and vehicle type.</div>
+    </section>
+</div>
+
+<script>
+    function getSpeedSuggestion() {
+        const roadType = document.getElementById('roadType').value;
+        const vehicleType = document.getElementById('vehicleType').value;
+        const suggestionBox = document.getElementById('suggestion');
+        const errorMessage = document.getElementById('errorMessage');
+
+        suggestionBox.style.display = 'none';
+        errorMessage.style.display = 'none';
+
+        if (roadType === '' || vehicleType === '') {
+            errorMessage.style.display = 'block';
+            return;
+        }
+
+        let speedSuggestion;
+
+        if (roadType === 'highway') {
+            if (vehicleType === 'two-wheeler') {
+                speedSuggestion = 'Recommended speed: 80-100 km/h';
+            } else if (vehicleType === 'three-wheeler') {
+                speedSuggestion = 'Recommended speed: 70-90 km/h';
+            } else if (vehicleType === 'four-wheeler') {
+                speedSuggestion = 'Recommended speed: 100-120 km/h';
+            } else if (vehicleType === 'heavy-vehicle') {
+                speedSuggestion = 'Recommended speed: 80-100 km/h';
+            }
+        } else if (roadType === 'city') {
+            if (vehicleType === 'two-wheeler') {
+                speedSuggestion = 'Recommended speed: 30-50 km/h';
+            } else if (vehicleType === 'three-wheeler') {
+                speedSuggestion = 'Recommended speed: 30-40 km/h';
+            } else if (vehicleType === 'four-wheeler') {
+                speedSuggestion = 'Recommended speed: 40-60 km/h';
+            } else if (vehicleType === 'heavy-vehicle') {
+                speedSuggestion = 'Recommended speed: 30-40 km/h';
+            }
+        } else if (roadType === 'rural') {
+            if (vehicleType === 'two-wheeler') {
+                speedSuggestion = 'Recommended speed: 50-70 km/h';
+            } else if (vehicleType === 'three-wheeler') {
+                speedSuggestion = 'Recommended speed: 40-60 km/h';
+            } else if (vehicleType === 'four-wheeler') {
+                speedSuggestion = 'Recommended speed: 60-80 km/h';
+            } else if (vehicleType === 'heavy-vehicle') {
+                speedSuggestion = 'Recommended speed: 50-70 km/h';
+            }
+        } else if (roadType === 'offroad') {
+            if (vehicleType === 'two-wheeler') {
+                speedSuggestion = 'Recommended speed: 15-35 km/h';
+            } else if (vehicleType === 'three-wheeler') {
+                speedSuggestion = 'Recommended speed: 10-25 km/h';
+            } else if (vehicleType === 'four-wheeler') {
+                speedSuggestion = 'Recommended speed: 20-40 km/h';
+            } else if (vehicleType === 'heavy-vehicle') {
+                speedSuggestion = 'Recommended speed: 10-20 km/h';
+            }
+        }
+
+        suggestionBox.textContent = speedSuggestion;
+        suggestionBox.style.display = 'block';
+    }
+</script>
+</body>
+</html>
